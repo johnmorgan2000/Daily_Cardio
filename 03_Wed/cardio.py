@@ -6,25 +6,47 @@ def main():
 
 def solution1(input1, input2):
     new_string = ""
-    for i in range(0, len(input1)):
-        if input1[i] == input2[i]:
-            new_string += input1[i]
+    maxLength = returnGreaterLength(input1, input2);
+    minLength = returnLesserLength(input1, input2);
+    for i in range(0, maxLength):
+        if i < minLength:
+            if input1[i] == input2[i]:
+                new_string += input1[i]
+            else:
+                new_string += "."
         else:
             new_string += "."
+
     print(new_string)
 
 def solution2(input1, input2):
     new_string = ""
+    maxLength = returnGreaterLength(input1, input2);
+    minLength = returnLesserLength(input1, input2);
     i = 0
-    while i < len(input1):
-        if input1[i] == input2[i]:
-            new_string += input1[i]
+    while i < maxLength:
+        if i < minLength:
+            if input1[i] == input2[i]:
+                new_string += input1[i]
+            else:
+                new_string += "."
         else:
             new_string += "."
         i +=1
     print(new_string)
 
-        
+
+def returnGreaterLength(input1, input2):
+    if len(input1) > len(input2):
+        return len(input1)
+    else:
+        return len(input2)
+
+def returnLesserLength(input1, input2):
+    if len(input1) < len(input2):
+        return len(input1)
+    else:
+        return len(input2)
 
     
 def mapHandler(new_string,x):
@@ -34,4 +56,5 @@ def mapHandler(new_string,x):
 
 
 if __name__ == "__main__":
-    main();
+    main()
+
